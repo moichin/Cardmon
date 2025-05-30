@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + TS</title>
+  </head>
+  <body class="relative min-h-screen bg-gray-100">
+    
+  <div class="absolute top-1/2 left-1/2 
+  h-full
+  w-full
+  bg-amber-400 -translate-x-1/2 -translate-y-1/2" id="phone">
+    
+    <h1 class="font-pixelon text-4xl absolute flex "> pixelon</h1>
+
+    <div class="relative w-full h-full z-[99] hidden " id="menu-hide">
+
+      <ul class="relative w-[inherit] h-[inherit] z-[inherit]" id="menu-btns">
+
+        <li class="motion-translate-y-in-[150%] -motion-translate-x-in-[130%] motion-opacity-in-[15%] 
+        w-[112px] h-[112px] rounded-full absolute right-4 bottom-[232px] bg-blue-400" id="Profile"></li>
+
+       <li class="motion-translate-y-in-[150%] motion-opacity-in-[15%]
+       w-[112px] h-[112px] rounded-full absolute 
+       left-2/4 
+       bottom-[360px] 
+       bg-red-400 [transform:translateX(-50%)]" id="Card"></li>
+
+        <li class="motion-translate-y-in-[150%] motion-translate-x-in-[130%] motion-opacity-in-[15%] 
+        w-[112px] h-[112px] rounded-full absolute 
+        left-4 bottom-[232px] 
+        bg-pink-400" id="Inventory"></li>
+
+        <li class="w-[112px] h-[112px] rounded-full absolute 
+        left-2/4
+        -translate-x-1/2 
+        bottom-[72px] 
+        bg-yellow-200" id="close"></li>
+
+      </ul>
+      
+      <div class="absolute left-0 top-0 w-full h-full bg-amber-900 opacity-80" id="menu-bg"></div>
+
+    </div>
+
+  <a class="w-[112px] h-[112px] rounded-full absolute 
+  left-2/4
+  -translate-x-1/2 
+  bottom-[72px] bg-blue-400 z-98" id="open"></a>
+
+  <div class="w-[128px] h-[128px] absolute left-2/4 -translate-x-1/2 bottom-[64px] rounded-full bg-amber-400 z-97"></div>
+
+  <div class="w-full h-[128px] bg-gray-500 absolute left-0 bottom-0 rounded-t-xl z-96">
+
+  </div>
+  <!-- <img src="public/Union.svg" alt="bottom-ui" class="absolute left-0 bottom-0 w-full z-97"> -->
+</div>
+
+      
+
+
+ <!-- no sirve esta picha
+  <section class="flex flex-col w-full justify-end size-cardmon size-cardmon bg-amber-600">
+    <div class="flex relative w-full justify-center h-32 bg-pink-600">
+      <h1 class="relative top-4 left-10 text-9xl z-10">prueba</h1>
+        <div class="h-32 w-full hidden bg-amber-400" id="menu">
+          <div class="flex relative top-0 -left-60 justify-center space-x-3 w-full z-20">
+          <button class="bg-pink-200 h-6 motion-translate-y-in-[300%] motion-translate-x-in-[100%] motion-opacity-in-[20%]">Cards</button>
+          <button class="bg-pink-200 h-6 motion-translate-y-in-[300%] motion-opacity-in-[20%]" id="inventory">Inventory</button>
+          <button class="bg-pink-200 h-6 motion-translate-y-in-[300%] -motion-translate-x-in-[100%] motion-opacity-in-[20%]">Profile</button>
+          </div>
+          <div class="flex top-4 -left-60 relative justify-center w-full">
+            <button class=" bg-red-400 w-auto h-6 mt-12" id="btn-close">Close</button>
+          </div>
+        </div>
+        <button class="bg-amber-500 flex relative top-4 -left-60 justify-center w-auto h-6 mt-17 z-30" id="btn-open">open</button>
+    </div>
+    </section>
+ -->
+   
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
