@@ -3,10 +3,13 @@
 @plugin "tailwindcss-motion";
 
 @theme{
-
     --breakpoint-sm-cardmon: 22.5rem; /* 360px */
     --breakpoint-md-cardmon: 24.375rem; /* 350px */
     --font-pixelon: "Pixelon Regular", sans-serif; 
+    --font-offbit: "OffBitTrial Bold", sans-serif; 
+    --color-cardmon-orage: #FF8E06;
+    --color-cardmon-gray: #141414;
+    --color-cardmon-light-gray: #343434;
 }
 
 @font-face {
@@ -14,6 +17,14 @@
     font-style: normal;
     font-weight: normal;
     src: local('Pixelon Regular'), url('/src/fonts/Pixelon-E4JEg.woff') format('woff');
+}
+
+
+@font-face{
+    font-family: 'OffBitTrial Bold';
+    font-style: normal;
+    font-weight: bold;
+    src: local('OffBitTrial Bold'), url('/src/fonts/OffBitTrial-Bold.ttf') format('truetype');
 }
 
 @layer utilities{
