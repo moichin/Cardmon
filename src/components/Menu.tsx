@@ -78,9 +78,11 @@ export default function Menu(){
           
             <div className="w-20 h-20 absolute left-2/4 -translate-x-1/2 bottom-[90px] z-98">
               <span className={`w-1 h-1 absolute rounded-full left-0.5 bottom-[38px] z-101 ${visible ? 'bg-black opacity-90' : 'bg-cardmon-gray'}`}></span>
-              <span className={`w-[48px] h-[12px] rounded-full absolute left-4 bottom-[34px] ${visible ? 'motion-rotate-out-160 motion-duration-[600ms] bg-cardmon-orage' : 'motion-rotate-in-160 bg-white'} `} 
+              <span className={`w-[48px] h-[12px] rounded-full absolute left-4 bottom-[34px] duration-[400ms] ease-in-in ${visible ? 'rotate-[160deg] bg-cardmon-orage' : 'rotate-0 bg-white'}`} 
               id="rotate">
-                <span className={`w-1 h-1 rounded-full absolute left-[3px] bottom-[4px] ${visible ? 'bg-black opacity-90' : 'bg-cardmon-gray'} `}></span>
+                <span className={`w-1 h-1 rounded-full absolute left-[3px] bottom-[4px] duration-300 
+                ${visible ? 'bg-black opacity-90' : 'bg-cardmon-gray'}`}>
+                </span>
               </span>
               <span className="w-[56px] h-[56px] absolute rounded-full border-2 border-white left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2"></span>
               <a className={`w-20 h-20 rounded-full border-[8px] absolute z-100 ${visible ? 'border-cardmon-orage' : 'border-white' }`} 

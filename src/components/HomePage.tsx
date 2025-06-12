@@ -2,17 +2,17 @@ import HomePageSprite from './spritesheet/HomePageSprite'
 import Missions from './Missions'
 import { useState } from 'react';
 
-
 export default function Homepage() {
     const [visible, setVisible] = useState(false); 
+
     return (
        <div className="absolute w-full h-auto pb-[200px] bg-cardmon-gray">
 
             <div className="relative flex flex-col w-full h-full">
-                <div className="flex w-full h-[27px] font-offbit font-bold text-2xl text-white tracking-wider mt-[39px] justify-end bg-green-500">
-                    <h1 className="flex w-auto h-[26px] mb-[7px] mr-4">COINS</h1>
-                    <span className="w-6 h-6 bg-cardmon-orage border-2 border-white rounded-full mr-[5px]"></span>
-                    <h2 className="flex w-auto h-[26px] mb-[7px] mr-4">199</h2>
+                <div className="flex w-full h-6 mt-[40px] justify-end">
+                    <h1 className="leading-none text-xl text-white font-offbit font-bold tracking-wider pt-1 mr-4">COINS</h1>
+                    <span className="size-6 bg-cardmon-orage border-2 border-white rounded-full mr-2"></span>
+                    <h2 className="leading-none text-xl text-white font-offbit font-bold tracking-wider pt-1 mr-4">999</h2>
                 </div>
                 <div className="w-full justify-center flex pt-12 pb-6">
                     <div className="w-[168px] h-[168px] rounded-full border-8 bg-black border-cardmon-orage">
@@ -30,14 +30,17 @@ export default function Homepage() {
                     <h4 className="opacity-75">TODAY STEPS</h4>
                 </div>
             </div>
-               <button className="flex h-5 ml-4 mt-8 items-end"
+                <div className='h-8 w-full mt-8 flex justify-between items-center'>
+                <h5 className='leading-none text-xl text-white font-offbit font-bold tracking-wider ml-4'>MISSION PROGRESS</h5>
+                <button  className={`w-8 h-8 rounded-full mr-4 flex justify-center items-center duration-300 ease-in-in 
+                ${visible ? 'rotate-45 bg-cardmon-orage' : 'rotate-0 bg-white '}`}
                 onClick={() => setVisible(!visible)}>
-                    <h5 className="font-offbit font-bold text-xl text-white tracking-wider mt-auto">MISSION PROGRESS</h5>
-                        <div className="relative w-4 h-4 mb-[1px] ml-2.5">
-                            <span className="absolute bg-white w-4 h-1 left-0 top-1/2 -translate-y-1/2"></span> 
-                            <span className={`absolute bg-white w-1 h-4 top-0 left-1/2 -translate-x-1/2 ${visible ? 'rotate-0' : 'rotate-90'}`}></span> 
-                        </div> 
+                    <div className='size-4 relative'>
+                        <span className={`w-4 h-1  z-20 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 ${visible ? 'bg-white' : 'bg-cardmon-light-gray'}`}></span>
+                        <span className= {`w-1 h-4  z-10 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 ${visible ? 'bg-white' : 'bg-cardmon-light-gray'}`}></span>
+                    </div>
                 </button>
+                </div>
                 {visible && <Missions></Missions>}
        </div>
     );
