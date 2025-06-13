@@ -25,19 +25,26 @@ interface CardMissionsProps{
     cardWeeklyProgress: string
 }
 
+interface MenuProps {
+  titleProfile: string,
+  titleInventory: string,
+  titleStore: string,
+}
+
 interface ContainerProps{
     homePage?: HomePageProps,
     cardMissions?: CardMissionsProps
+    menu: MenuProps
 }
 
 export default function container(props: ContainerProps){
-    if (!props.homePage || !props.cardMissions) return null;
+    if (!props.homePage || !props.cardMissions ) return null;
 
     return(
 
     <div className="absolute h-full w-full bg-cardmon-gray" id="container">
             <Homepage homePage={props.homePage} cardMissions={props.cardMissions}></Homepage>
-            <Menu></Menu>
+            <Menu {...props.menu}></Menu>
     </div>
     );
 

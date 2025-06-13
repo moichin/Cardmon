@@ -1,11 +1,19 @@
 import { useState } from "react";
+import { Link } from '@tanstack/react-router';
 
 /*
 Este componente es el menu despegable, este fue planteado por medio de diferentes etiquetas de html, como ul, li, a, spam, div 
 aunque estas no se utilicen para lo que fueron diseñadas ya que en este componente se utilizan para representar elementos graficos. 
 Por medio de use state y rombo tailwind se hacen animaciones. Por ejemplo que visible es basicamente para desparecer o aparecer los componentes del menu. 
 */
-export default function Menu(){
+
+interface MenuProps {
+  titleProfile: string,
+  titleInventory: string,
+  titleStore: string,
+}
+
+export default function Menu(props: MenuProps) {
     const [visible, setVisible] = useState(false); 
 
     const [controlAnimation, setControlAnimation] = useState(false);
@@ -35,19 +43,19 @@ export default function Menu(){
               'motion-translate-y-in-[150%] -motion-translate-x-in-[100%] motion-opacity-in-[15%]' 
               : 
               'motion-translate-y-out-[150%] -motion-translate-x-out-[100%] motion-opacity-out-[0%] motion-duration-[0.30s]/opacity motion-duration-[0.50s]' }`}>
-                <h2 className="font-offbit text-base w-full h-[18px] justify-center items-center flex text-white tracking-wider">PROFILE</h2>
-                <div className="w-20 h-20 rounded-full border-[3px] border-gray-400 absolute left-1/2 -translate-x-1/2 bottom-0">
+                <h2 className="font-offbit text-base w-full h-[18px] justify-center items-center flex text-white tracking-wider">{props.titleProfile}</h2>
+                <Link className="w-20 h-20 rounded-full border-[3px] border-gray-400 absolute left-1/2 -translate-x-1/2 bottom-0" to='/gacha'>
                   <span className="w-[68px] h-[68px] rounded-full bg-white absolute left-1/2 -translate-x-1/2 mt-[3px]">
                     <img src="/src/assets/menuIcons/profile.svg" alt="img-profile" className="w-[25px] h-[28px] left-1/2 top-5 -translate-x-1/2 absolute"/>
                   </span>
-                </div>
+                </Link>
               </li>
 
               <li className={`w-[120px] h-[106px] absolute left-3 bottom-[260px] ${visible && !controlAnimation ? 
               'motion-translate-y-in-[150%] motion-translate-x-in-[100%] motion-opacity-in-[15%]' 
               : 
               'motion-translate-y-out-[150%] motion-translate-x-out-[100%] motion-opacity-out-[0%] motion-duration-[0.30s]/opacity motion-duration-[0.50s]'}`}>
-                <h2 className="font-offbit text-base w-full h-[18px] justify-center items-center flex text-white tracking-wider">INVENTORY</h2>
+                <h2 className="font-offbit text-base w-full h-[18px] justify-center items-center flex text-white tracking-wider">{props.titleInventory}</h2>
                 <div className="w-20 h-20 rounded-full border-[3px] border-gray-400 absolute left-1/2 -translate-x-1/2 bottom-0">
                   <span className="w-[68px] h-[68px] rounded-full bg-white absolute left-1/2 -translate-x-1/2 mt-[3px]">
                     <img src="/src/assets/menuIcons/inventory.svg" alt="img-inventory" className="w-[26px] h-[30px] left-1/2 top-[19px] -translate-x-1/2 absolute"/>
@@ -61,7 +69,7 @@ export default function Menu(){
               :
               'motion-translate-y-out-[150%] motion-opacity-out-[0%] motion-duration-[0.30s]/opacity motion-duration-[0.50s]'
               }`}>
-                <h2 className="font-offbit text-base w-full h-[18px] justify-center items-center flex text-white tracking-wider">STORE</h2>
+                <h2 className="font-offbit text-base w-full h-[18px] justify-center items-center flex text-white tracking-wider">{props.titleStore}</h2>
                 <div className="w-20 h-20 rounded-full border-[3px] border-gray-400 absolute left-1/2 -translate-x-1/2 bottom-0">
                   <span className="w-[68px] h-[68px] rounded-full bg-white absolute left-1/2 -translate-x-1/2 mt-[3px]">
                     <img src="/src/assets/menuIcons/store.svg" alt="img-store" className="w-[27px] h-[31px] left-1/2 top-[19px] -translate-x-1/2 absolute"/>
