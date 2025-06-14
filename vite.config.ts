@@ -1,9 +1,9 @@
+
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 import tailwindcss from '@tailwindcss/vite'
 import { tanstackRouter } from '@tanstack/router-plugin/vite'
-
-const url = "c6ab-2800-860-71b7-7b6f-d8c7-97a7-8d9c-4717.ngrok-free.app";
+import basicSsl from '@vitejs/plugin-basic-ssl'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -14,9 +14,11 @@ export default defineConfig({
       verboseFileRoutes: false,
     }),
     react(),
-    tailwindcss()
+    tailwindcss(),
+    basicSsl() // enables HTTPS support
   ],
   server: {
-    allowedHosts: [url],
+    https: true, // turns on HTTPS
+    host: true   // optionally expose to LAN
   }
 })
