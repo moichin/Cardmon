@@ -1,6 +1,7 @@
-import HomePageSprite from './spritesheet/HomePageSprite'
+import HomePageSprite from '../../spritesheet/HomePageSprite'
 import CardsMissions from './CardsMissions'
 import { useState } from 'react';
+import StepCounter from './StepCounter';
 
 interface HomePageProps {
     steps: number,
@@ -13,17 +14,15 @@ interface HomePageProps {
 interface CardMissionsProps{
     cardDailyGoalTitle: string,
     cardRewardTitle: string,
-    cardSteps: number, 
+    cardDailySteps: number, 
     cardDailyStepsGoal: string,
     cardStepsTitle: string,  
     cardDailyRewardCoins: string,
-    cardDailyProgress: string,
 
     cardWeeklyGoalTitle: string,
     cardWeeklySteps: number,
     cardWeeklyStepsGoal: string,
     cardWeeklyRewardCoins: string,
-    cardWeeklyProgress: string
 }
 
 interface HomePageCombinedProps{
@@ -34,14 +33,17 @@ interface HomePageCombinedProps{
 export default function Homepage(props: HomePageCombinedProps) {
     const [visible, setVisible] = useState(false); 
 
+    const [steps, setSteps] = useState(0)
+    const [coins, setCoins] = useState(0)
+
     return (
        <div className="absolute w-full h-auto pb-[200px] bg-cardmon-gray">
-
+            <StepCounter steps={steps} setSteps={setSteps} coins={coins} setCoins={setCoins} />
             <div className="relative flex flex-col w-full h-full">
                 <div className="flex w-full h-6 mt-[40px] justify-end">
                     <h1 className="leading-none text-xl text-white font-offbit font-bold tracking-wider pt-1 mr-4">{props.homePage.coinsTitle}</h1>
                     <span className="size-6 bg-cardmon-orage border-2 border-white rounded-full mr-2"></span>
-                    <h2 className="leading-none text-xl text-white font-offbit font-bold tracking-wider pt-1 mr-4">{props.homePage.coins}</h2>
+                    <h2 className="leading-none text-xl text-white font-offbit font-bold tracking-wider pt-1 mr-4">{coins}</h2>
                 </div>
                 <div className="w-full justify-center flex pt-12 pb-6">
                     <div className="w-[168px] h-[168px] rounded-full border-8 bg-black border-cardmon-orage">
@@ -55,7 +57,7 @@ export default function Homepage(props: HomePageCombinedProps) {
                     </div>
                 </div>
                 <div className="w-full items-center flex flex-col font-offbit font-bold text-2xl text-white tracking-wider space-y-4">
-                    <h3>{props.homePage.steps}</h3>
+                    <h3>{steps}</h3>
                     <h4 className="opacity-75">{props.homePage.todayStepsTitle}</h4>
                 </div>
             </div>
@@ -70,7 +72,8 @@ export default function Homepage(props: HomePageCombinedProps) {
                     </div>
                 </button>
                 </div>
-                {visible && <CardsMissions {...props.cardMissions}></CardsMissions>}
+                {visible && <CardsMissions {...props.cardMissions}  cardDailySteps={steps} cardWeeklySteps={steps}></CardsMissions>}
        </div>
     );
 }
+

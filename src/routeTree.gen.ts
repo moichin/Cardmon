@@ -11,12 +11,12 @@
 import type { CreateFileRoute, FileRoutesByPath } from '@tanstack/react-router'
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as GachaRouteImport } from './routes/gacha'
+import { Route as StoreRouteImport } from './routes/store'
 import { Route as IndexRouteImport } from './routes/index'
 
-const GachaRoute = GachaRouteImport.update({
-  id: '/gacha',
-  path: '/gacha',
+const StoreRoute = StoreRouteImport.update({
+  id: '/store',
+  path: '/store',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -27,28 +27,28 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/gacha': typeof GachaRoute
+  '/store': typeof StoreRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/gacha': typeof GachaRoute
+  '/store': typeof StoreRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/gacha': typeof GachaRoute
+  '/store': typeof StoreRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/gacha'
+  fullPaths: '/' | '/store'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/gacha'
-  id: '__root__' | '/' | '/gacha'
+  to: '/' | '/store'
+  id: '__root__' | '/' | '/store'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  GachaRoute: typeof GachaRoute
+  StoreRoute: typeof StoreRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -60,11 +60,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/gacha': {
-      id: '/gacha'
-      path: '/gacha'
-      fullPath: '/gacha'
-      preLoaderRoute: typeof GachaRouteImport
+    '/store': {
+      id: '/store'
+      path: '/store'
+      fullPath: '/store'
+      preLoaderRoute: typeof StoreRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -79,19 +79,19 @@ declare module './routes/index' {
     FileRoutesByPath['/']['fullPath']
   >
 }
-declare module './routes/gacha' {
+declare module './routes/store' {
   const createFileRoute: CreateFileRoute<
-    '/gacha',
-    FileRoutesByPath['/gacha']['parentRoute'],
-    FileRoutesByPath['/gacha']['id'],
-    FileRoutesByPath['/gacha']['path'],
-    FileRoutesByPath['/gacha']['fullPath']
+    '/store',
+    FileRoutesByPath['/store']['parentRoute'],
+    FileRoutesByPath['/store']['id'],
+    FileRoutesByPath['/store']['path'],
+    FileRoutesByPath['/store']['fullPath']
   >
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  GachaRoute: GachaRoute,
+  StoreRoute: StoreRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
