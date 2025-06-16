@@ -4,11 +4,11 @@ import { useState } from 'react';
 import StepCounter from './StepCounter';
 
 interface HomePageProps {
-    steps: number,
-    coinsTitle: string,
-    coins: number,
-    todayStepsTitle: string,
-    missionsTitle: string
+  steps: number;
+  coinsTitle: string;
+  coins: number;
+  todayStepsTitle: string;
+  missionsTitle: string;
 }
 
 interface CardMissionsProps{
@@ -25,9 +25,9 @@ interface CardMissionsProps{
     cardWeeklyRewardCoins: string,
 }
 
-interface HomePageCombinedProps{
-    homePage: HomePageProps,
-    cardMissions: CardMissionsProps
+interface HomePageCombinedProps {
+  homePage: HomePageProps;
+  cardMissions: CardMissionsProps;
 }
 
 export default function Homepage(props: HomePageCombinedProps) {
