@@ -1,4 +1,3 @@
-
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 import tailwindcss from '@tailwindcss/vite'
@@ -15,10 +14,10 @@ export default defineConfig({
     }),
     react(),
     tailwindcss(),
-    basicSsl() // enables HTTPS support
+    basicSsl() 
   ],
   server: {
-    https: true, // turns on HTTPS
-    host: true   // optionally expose to LAN
+    https: true, 
+    host: true  
   }
 })
