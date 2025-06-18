@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "name": "fire",
+    "rarity": "Común",
+    "image": "image1.png"
+  },
+  {
+    "id": 2,
+    "name": "pikachu",
+    "rarity": "Común",
+    "image": "image2.png"
+  },
+  {
+    "id": 3,
+    "name": "Snorlax",
+    "rarity": "Rara",
+    "image": "image3.png"
+  },
+  {
+    "id": 4,
+    "name": "MarioNeta",
+    "rarity": "Legendaria",
+    "image": "image4.png"
+  },
+  {
+    "id": 5,
+    "name": "Miranda",
+    "rarity": "Épica",
+    "image": "image5.png"
+  },
+  {
+    "id": 6,
+    "name": "soda",
+    "rarity": "Rara",
+    "image": "image6.png"
+  },
+  {
+    "id": 7,
+    "name": "moises",
+    "rarity": "Legendaria",
+    "image": "image7.png"
+  },
+  {
+    "id": 8,
+    "name": "isaac",
+    "rarity": "Épica",
+    "image": "image8.png"
+  },
+  {
+    "id": 9,
+    "name": "gatoAzul",
+    "rarity": "Rara",
+    "image": "image9.png"
+  }
+]
