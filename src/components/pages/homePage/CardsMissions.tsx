@@ -15,15 +15,25 @@ interface CardMissionsProps{
 
 export default function CardsMissions (props: CardMissionsProps){
 
-    const stepsDaily = props.cardDailySteps; 
-    const goalDaily = 10;
+    const cardDaily = () => {
+        const stepsDaily = props.cardDailySteps;
+        const goalDaily = 10;
+        const stepsInCycleDaily = stepsDaily % goalDaily;
+        const dailyPorcentaje = goalDaily > 0 ? (stepsInCycleDaily / goalDaily) * 100 : 0;
+        const dailyPorcentajeEstimaded = Math.round(Math.min(dailyPorcentaje, 100));
+        const dailyProgress = `${dailyPorcentajeEstimaded}%`;
+        return dailyProgress;
+    }
 
-    const stepsInCycleDaily = stepsDaily % goalDaily;
-    
-    const dailyPorcetaje = goalDaily > 0 ? (stepsInCycleDaily / goalDaily) * 100 : 0;
-    const dailyPorcetajeEstimaded = Math.round(Math.min(dailyPorcetaje, 100));
-
-    const dailyProgress = `${dailyPorcetajeEstimaded}%`;
+    const cardWeekly = () => {
+        const stepsWeekly = props.cardWeeklySteps;
+        const goalWeekly = 20; 
+        const stepsInCycleWeekly = stepsWeekly % goalWeekly;
+        const weeklyPorcentaje = goalWeekly > 0 ? (stepsInCycleWeekly / goalWeekly) * 100: 0;
+        const weeklyPorcentajeEstimaded = Math.round(Math.min(weeklyPorcentaje, 100));
+        const weeklyProgress = `${weeklyPorcentajeEstimaded}%`;
+        return weeklyProgress;
+    }
 
    
     return(
@@ -48,12 +58,12 @@ export default function CardsMissions (props: CardMissionsProps){
                 <div className="flex justify-between w-full h-auto mt-8">
                     <div className="flex items-center">
                         <div className="w-[200px] h-2 ml-5 bg-white">
-                            <div className="bg-cardmon-orage w-[200px] flex h-2 transition-all duration-300" style={{ width: dailyProgress }}>
+                            <div className="bg-cardmon-orage w-[200px] flex h-2 transition-all duration-300" style={{ width: cardDaily() }}>
                             </div>
                         </div>   
                     </div>
                     <div className="flex item-end">
-                        <h2 className="text-white font-offbit font-bold tracking-wider text-xl leading-none mr-5">{dailyProgress}</h2>
+                        <h2 className="text-white font-offbit font-bold tracking-wider text-xl leading-none mr-5">{cardDaily()}</h2>
                     </div>
                 </div>
             </div>
@@ -77,10 +87,13 @@ export default function CardsMissions (props: CardMissionsProps){
                 </div>
                 <div className="flex justify-between w-full h-auto mt-8">
                     <div className="flex items-center">
-                        <div className="bg-cardmon-orage w-[200px] h-2 ml-5"></div>
+                        <div className="w-[200px] h-2 ml-5 bg-white">
+                            <div className="bg-cardmon-orage w-[200px] flex h-2 transition-all duration-300" style={{ width: cardWeekly() }}>
+                            </div>
+                        </div>   
                     </div>
                     <div className="flex item-end">
-                        <h2 className="text-white font-offbit font-bold tracking-wider text-xl leading-none mr-5">PROGRESO AQUI</h2>
+                        <h2 className="text-white font-offbit font-bold tracking-wider text-xl leading-none mr-5">{cardWeekly()}</h2>
                     </div>
                 </div>
             </div>

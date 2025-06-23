@@ -1,16 +1,27 @@
-import { Link } from '@tanstack/react-router';
 import ContainerStorePage from '../components/pages/storePage/ContainerStorePage';
+
+interface CardProps {
+  id: number;
+  name: string;
+  rarity: string;
+  color: string;
+}
+
+const storePage = {
+  coinsTitle: 'COINS',
+  priceTitle: 'PRICE',
+  price: '100',
+  btnTitle: 'OPEN'
+}
+
 export const Route = createFileRoute({
   component: RouteComponent,
 })
 
-
-function RouteComponent() {
+function RouteComponent(props: CardProps) {
   return (
   <>  
-  <Link className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 bg-red-300 z-100" to='/'>dads</Link>
-
-  <ContainerStorePage></ContainerStorePage>
+  <ContainerStorePage storePage={storePage} card={props}></ContainerStorePage>
   </>
   )
 }

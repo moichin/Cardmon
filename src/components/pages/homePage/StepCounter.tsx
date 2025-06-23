@@ -9,7 +9,8 @@ interface StepCounterProps {
 
 export default function StepCounter(props: StepCounterProps) {
   const lastStepTimeRef = useRef(Date.now());
-  const lastRewardStepRef = useRef(0);
+  const lastRewardStepsDailyRef = useRef(0);
+  const lastRewardStepsWeeklyRef = useRef(0);
 
   const THRESHOLD = 12;
   const STEP_INTERVAL = 400;
@@ -30,9 +31,14 @@ export default function StepCounter(props: StepCounterProps) {
       props.setSteps(prev => {
         const newSteps = prev + 1;
 
-        if (newSteps % 10 === 0 && newSteps !== lastRewardStepRef.current) {
+        if (newSteps % 10 === 0 && newSteps !== lastRewardStepsDailyRef.current) {
           props.setCoins(c => c + 1);
-          lastRewardStepRef.current = newSteps;
+          lastRewardStepsDailyRef.current = newSteps;
+        }
+
+        if (newSteps % 20 === 0 && newSteps !== lastRewardStepsWeeklyRef.current) {
+          props.setCoins(c => c + 5);
+          lastRewardStepsWeeklyRef.current = newSteps;
         }
 
         return newSteps;
