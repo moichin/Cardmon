@@ -62,7 +62,7 @@ export default function Homepage(props: HomePageCombinedProps) {
                         frameCount={2}          
                         frameWidth={13}
                         frameHeight={16}
-                        imageUrl="/src/assets/character-Sheet.png"
+                        imageUrl="/character-Sheet.png"
                         fps={2} 
                         ></HomePageSprite>
                     </div>

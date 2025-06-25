@@ -39,8 +39,8 @@ export default function Menu(props: MenuProps) {
 
             {(visible || controlAnimation) && <ul className="relative w-[inherit] h-[inherit] z-[inherit]" id="menu-hide">
 
-              <li className={`w-[120px] h-[106px] absolute right-3 bottom-[260px] ${visible && !controlAnimation ? 
-              'motion-translate-y-in-[150%] -motion-translate-x-in-[100%] motion-opacity-in-[15%]' 
+              <li className={`w-[120px] h-[106px] absolute right-3 bottom-52 ${visible && !controlAnimation ? 
+              'motion-translate-y-in-[150%] -motion-translate-x-in-[100%] motion-opacity-in-[150%]' 
               : 
               'motion-translate-y-out-[150%] -motion-translate-x-out-[100%] motion-opacity-out-[0%] motion-duration-[0.30s]/opacity motion-duration-[0.50s]' }`}>
                 <h2 className="font-offbit text-base w-full h-[18px] justify-center items-center flex text-white tracking-wider">{props.titleProfile}</h2>
@@ -53,7 +53,7 @@ export default function Menu(props: MenuProps) {
                 </div>
               </li>
 
-              <li className={`w-[120px] h-[106px] absolute left-3 bottom-[260px] ${visible && !controlAnimation ? 
+              <li className={`w-[120px] h-[106px] absolute left-3 bottom-52 ${visible && !controlAnimation ? 
               'motion-translate-y-in-[150%] motion-translate-x-in-[100%] motion-opacity-in-[15%]' 
               : 
               'motion-translate-y-out-[150%] motion-translate-x-out-[100%] motion-opacity-out-[0%] motion-duration-[0.30s]/opacity motion-duration-[0.50s]'}`}>
@@ -68,7 +68,7 @@ export default function Menu(props: MenuProps) {
               </li>
 
               <li className={`[transform:translateX(-50%)]
-              w-[120px] h-[106px] absolute left-1/2 -translate-x-1/2 bottom-[388px] ${visible && !controlAnimation ?
+              w-[120px] h-[106px] absolute left-1/2 -translate-x-1/2 bottom-[356px] ${visible && !controlAnimation ?
               'motion-translate-y-in-[150%] motion-opacity-in-[15%]'
               :
               'motion-translate-y-out-[150%] motion-opacity-out-[0%] motion-duration-[0.30s]/opacity motion-duration-[0.50s]'
@@ -96,7 +96,7 @@ export default function Menu(props: MenuProps) {
 
             </ul>}
           
-            <div className="size-20 absolute left-2/4 -translate-x-1/2 bottom-[90px] z-98">
+            <div className="size-20 absolute left-2/4 -translate-x-1/2 bottom-16 z-98">
               <span className={`size-1 absolute rounded-full left-0.5 bottom-[38px] z-101 ${visible ? 'bg-black opacity-90' : 'bg-cardmon-gray'}`}></span>
               <span className={`w-[48px] h-[12px] rounded-full absolute left-4 bottom-[34px] duration-[400ms] ease-in-in ${visible ? 'rotate-[160deg] bg-cardmon-orage' : 'rotate-0 bg-white'}`} 
               id="rotate">
@@ -114,9 +114,9 @@ export default function Menu(props: MenuProps) {
 
         </div>
         
-        <span className="absolute size-20 bg-cardmon-gray rounded-full left-2/4 -translate-x-1/2 bottom-[90px] "></span>
-        <div className="w-full h-[128px] bg-cardmon-light-gray absolute left-0 bottom-0 rounded-t-xl z-96 
-        [mask-image:radial-gradient(circle_at_50%_calc(50%_-_64px),_transparent_64px,_white_65px)] "></div>
+        <span className="absolute size-20 bg-cardmon-gray rounded-full left-2/4 -translate-x-1/2 bottom-[64px] "></span>
+        <div className="w-full h-[104px] bg-cardmon-light-gray absolute left-0 bottom-0 rounded-t-xl z-96 
+        [mask-image:radial-gradient(circle_at_50%_calc(50%_-50px),_transparent_64px,_white_65px)] "></div>
       </div>
 
     );

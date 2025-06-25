@@ -35,8 +35,6 @@ interface ContainerProps{
     menu: MenuProps
 }
 
-
-
 export default function ContainerHomePage(props: ContainerProps){
     if (!props.homePage || !props.cardMissions ) return null;
 

@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback} from "react";
 import CardModel3d from "./CardModel3d";
 import StorePageSprite from "../../spritesheet/StorePageSprite"
+import StoreInformation from "./StoreInformation";
 
 interface CardProps {
   id: number;
@@ -30,6 +31,7 @@ export default function StorePage(props: StorePageCombinedProps){
     const [jsonCards, setJsonCards] = useState <CardProps[]> ([]); 
 
     const controlCard = () => {
+      console.log("Control Card");
       setTimeout(() => {
          setVisibleOpenAnimation(!visibleOpenAnimation)
         setTimeout(() =>{
@@ -38,6 +40,7 @@ export default function StorePage(props: StorePageCombinedProps){
         setVisible(true)
       }, 200);
     };
+
 
     const PACK_TYPES = [
         { name: "Common", chance: 60},
@@ -123,7 +126,7 @@ export default function StorePage(props: StorePageCombinedProps){
                 </div>
               </div>
             </div>
-            <img src="/src/assets/packCard.png" alt="packCard" className="w-[164px] h-[282px] -rotate-2 motion-rotate-loop-[4deg] motion-duration-1900" style={{imageRendering: "pixelated"}} />
+            <img src="/packCard.png" alt="packCard" className="w-[164px] h-[282px] -rotate-2 motion-rotate-loop-[4deg] motion-duration-1900" style={{imageRendering: "pixelated"}} />
           </div>
 
           <div className="ml-4 mr-4">
@@ -140,16 +143,15 @@ export default function StorePage(props: StorePageCombinedProps){
               frameCount={18}          
               frameWidth={245}
               frameHeight={255}
-              imageUrl="/src/assets/packAnimation-Sheet.png"
+              imageUrl="/packAnimation-Sheet.png"
               fps={12}>  
               </StorePageSprite> 
             </div>}
             
           {visible && selectedCard && <CardModel3d color={selectedCard.color} />}
-        
+            
+          {visibleInformation && <StoreInformation visibleInformation={visibleInformation} setVisibleInformation={setVisibleInformation}></StoreInformation>}
       </div>
   );
 }
 
-
-// {`  ${visibleInformation ? 'fill-cardmon-orage' : 'fill-cardmon-orage'}`}
