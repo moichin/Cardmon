@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback} from "react";
+import { useState, useEffect} from "react";
 import CardModel3d from "./CardModel3d";
 import StorePageSprite from "../../spritesheet/StorePageSprite"
 import StoreInformation from "./StoreInformation";
@@ -27,26 +27,28 @@ export default function StorePage(props: StorePageCombinedProps){
     const [visibleOpenAnimation, setVisibleOpenAnimation] = useState(false)
     const [visibleInformation, setVisibleInformation] = useState(false)
     const [coins, setCoins] = useState(1000); 
-    const [selectedCard, setSelectedCard] = useState <CardProps | null>(null);
+    const [obtainedCard, setObtainedCard] = useState <CardProps | null>(null);
     const [jsonCards, setJsonCards] = useState <CardProps[]> ([]); 
 
     const controlCard = () => {
       console.log("Control Card");
       setTimeout(() => {
-         setVisibleOpenAnimation(!visibleOpenAnimation)
+
+        setVisibleOpenAnimation(true)
+
         setTimeout(() =>{
           setVisibleOpenAnimation(false)
+           setVisible(true)
         }, 2000); 
-        setVisible(true)
+
       }, 200);
     };
 
-
     const PACK_TYPES = [
-        { name: "Common", chance: 60},
-        { name: "Rare", chance: 25},
-        { name: "Epic", chance: 10},
-        { name: "Legendary", chance: 5},
+        { name: "NORMAL", chance: 60},
+        { name: "RARE", chance: 25},
+        { name: "EPIC", chance: 10},
+        { name: "LEGEND", chance: 5},
     ];
 
      useEffect(() => {
@@ -96,7 +98,7 @@ export default function StorePage(props: StorePageCombinedProps){
 
   if (card) {
     console.log(`Carta obtenida - ID: ${card.id}, Rareza: ${selectedRarity.name}, Nombre: ${card.name}`);
-    setSelectedCard(card);
+    setObtainedCard(card);
   }
   };
 
@@ -138,7 +140,7 @@ export default function StorePage(props: StorePageCombinedProps){
               </button>
           </div>
 
-          {visibleOpenAnimation && <div className="absolute flex size-full bg-black  z-1000 ">
+          {visibleOpenAnimation && <div className="absolute flex size-full bg-black z-101">
               <StorePageSprite 
               frameCount={18}          
               frameWidth={245}
@@ -148,7 +150,7 @@ export default function StorePage(props: StorePageCombinedProps){
               </StorePageSprite> 
             </div>}
             
-          {visible && selectedCard && <CardModel3d color={selectedCard.color} />}
+          {obtainedCard && <CardModel3d color={obtainedCard.color} visible={visible} setVisible={setVisible}/>}
             
           {visibleInformation && <StoreInformation visibleInformation={visibleInformation} setVisibleInformation={setVisibleInformation}></StoreInformation>}
       </div>

@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+
 interface CardMissionsProps{
     cardDailyGoalTitle: string,
     cardRewardTitle: string,
@@ -12,33 +14,57 @@ interface CardMissionsProps{
     cardWeeklyRewardCoins: string,
 }
 
-
 export default function CardsMissions (props: CardMissionsProps){
 
+    const [waitCardDaily, setWaitCardDaily] = useState(false);
+    const [waitCardWeekly, setWaitCardWeekly] = useState(false);
+
     const cardDaily = () => {
-        const stepsDaily = props.cardDailySteps;
-        const goalDaily = 10;
-        const stepsInCycleDaily = stepsDaily % goalDaily;
-        const dailyPorcentaje = goalDaily > 0 ? (stepsInCycleDaily / goalDaily) * 100 : 0;
-        const dailyPorcentajeEstimaded = Math.round(Math.min(dailyPorcentaje, 100));
-        const dailyProgress = `${dailyPorcentajeEstimaded}%`;
-        return dailyProgress;
+    const stepsDaily = props.cardDailySteps; 
+    const goalDaily = 10;
+    const dailyPorcentaje = goalDaily > 0 ? (stepsDaily / goalDaily) * 100 : 0;
+    const dailyPorcentajeEstimaded = Math.min(Math.round(dailyPorcentaje), 100);
+    const dailyProgress = `${dailyPorcentajeEstimaded}%`;
+    return dailyProgress;
+    };
+
+    useEffect(() => {
+    const goalDaily = 10;
+    const dailyPorcentaje = goalDaily > 0 ? (props.cardDailySteps / goalDaily) * 100 : 0;
+    const dailyPorcentajeEstimaded = Math.min(Math.round(dailyPorcentaje), 100);
+
+    if (dailyPorcentajeEstimaded >= 100) {
+        setWaitCardDaily(true);
     }
+    }, [props.cardDailySteps]);
 
     const cardWeekly = () => {
         const stepsWeekly = props.cardWeeklySteps;
         const goalWeekly = 20; 
-        const stepsInCycleWeekly = stepsWeekly % goalWeekly;
-        const weeklyPorcentaje = goalWeekly > 0 ? (stepsInCycleWeekly / goalWeekly) * 100: 0;
+        const weeklyPorcentaje = goalWeekly > 0 ? (stepsWeekly / goalWeekly) * 100: 0;
         const weeklyPorcentajeEstimaded = Math.round(Math.min(weeklyPorcentaje, 100));
         const weeklyProgress = `${weeklyPorcentajeEstimaded}%`;
         return weeklyProgress;
     }
 
-   
+    useEffect(() => {
+        const goalWeekly = 20;
+        const weeklyPorcentaje = goalWeekly > 0 ? (props.cardWeeklySteps / goalWeekly) * 100 : 0;
+        const weeklyPorcentajeEstimaded = Math.min(Math.round(weeklyPorcentaje), 100
+        );
+        if (weeklyPorcentajeEstimaded >= 100) {
+            setWaitCardWeekly(true);
+        }
+    }, [props.cardWeeklySteps]);
+
     return(
         <div className="relative flex-col ml-4 mr-4 mt-4 space-y-4">
             <div className="w-full h-[152px] border-4 border-cardmon-orage rounded-lg bg-black motion-preset-slide-up motion-delay-0">
+                {waitCardDaily && (
+                    <div className='absolute bg-black w-full size-full flex z-1 opacity-95'>
+                        <h1 className="size-full text-center text-white flex items-center justify-center text-2xl font-offbit font-bold leading-none tracking-wider">24:00:00</h1>
+                    </div>
+                )}
                 <div className="text-white font-offbit font-bold text-base tracking-wider 
                 flex w-full justify-between pl-5 pr-5 pt-5">
                     <h1 className="opacity-75">{props.cardDailyGoalTitle}</h1>
@@ -67,8 +93,13 @@ export default function CardsMissions (props: CardMissionsProps){
                     </div>
                 </div>
             </div>
-
+            
             <div className="w-full h-[152px] border-4 border-cardmon-orage rounded-lg bg-black motion-preset-slide-up motion-delay-0">
+                {waitCardWeekly && (
+                    <div className='absolute bg-black w-full size-full flex z-1 opacity-95'>
+                        <h1 className="size-full text-center text-white flex items-center justify-center text-2xl font-offbit font-bold leading-none tracking-wider">168:00:00</h1>
+                    </div>
+                )}
                 <div className="text-white font-offbit font-bold text-base tracking-wider 
                 flex w-full justify-between pl-5 pr-5 pt-5">
                     <h1 className="opacity-75">{props.cardWeeklyGoalTitle}</h1>

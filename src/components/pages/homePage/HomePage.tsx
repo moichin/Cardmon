@@ -2,6 +2,7 @@ import HomePageSprite from '../../spritesheet/HomePageSprite'
 import CardsMissions from './CardsMissions'
 import { useState } from 'react';
 import StepCounter from './StepCounter';
+import HomeInformation from './HomeInformation';
 
 interface HomePageProps {
   steps: number;
@@ -38,7 +39,11 @@ export default function Homepage(props: HomePageCombinedProps) {
     const [coins, setCoins] = useState(0);
 
     return (
+    <>
+            {visibleInformation && <HomeInformation visibleInformation={visibleInformation} setVisibleInformation={setVisibleInformation}></HomeInformation>}
+
        <div className="absolute w-full h-auto pb-[200px] bg-cardmon-gray">
+
             <StepCounter steps={steps} setSteps={setSteps} coins={coins} setCoins={setCoins} />
             <div className="relative flex flex-col size-full">
 
@@ -57,14 +62,8 @@ export default function Homepage(props: HomePageCombinedProps) {
                 </div>
 
                 <div className="w-full justify-center flex pt-12 pb-6">
-                    <div className="w-[168px] h-[168px] rounded-full border-8 bg-black border-cardmon-orage">
-                        <HomePageSprite 
-                        frameCount={2}          
-                        frameWidth={13}
-                        frameHeight={16}
-                        imageUrl="/character-Sheet.png"
-                        fps={2} 
-                        ></HomePageSprite>
+                    <div className="w-[168px] h-[168px] rounded-full border-8 bg-black border-cardmon-orage flex justify-center items-center">
+                        <img src="./public/character.gif" alt="a" className='scale-60 ml-1'/>
                     </div>
                 </div>
                 <div className="w-full items-center flex flex-col font-offbit font-bold text-2xl text-white tracking-wider space-y-4">
@@ -85,6 +84,16 @@ export default function Homepage(props: HomePageCombinedProps) {
                 </div>
                 {visible && <CardsMissions {...props.cardMissions}  cardDailySteps={steps} cardWeeklySteps={steps}></CardsMissions>}
        </div>
+       </>
     );
 }
 
+/*
+
+<HomePageSprite 
+                        frameCount={2}          
+                        frameWidth={13}
+                        frameHeight={16}
+                        imageUrl="/character-Sheet.png"
+                        fps={2} 
+                        ></HomePageSprite>*/

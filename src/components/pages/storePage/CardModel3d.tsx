@@ -4,6 +4,8 @@ import { Environment } from '@react-three/drei'
 
 interface CardModel3dProps {
   color: string
+  visible: boolean;
+  setVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 function CardBox({ color }: { color: string }) {
@@ -25,7 +27,7 @@ function CardBox({ color }: { color: string }) {
 
 export default function CardModel3d(props: CardModel3dProps) {
   return (
-    <div className="absolute size-full bg-cardmon-gray z-100">
+    <div className={`size-full fixed bg-cardmon-gray z-100 ${props.visible ? 'absolute': 'hidden'}`}>
       <Canvas camera={{ position: [0, 0, 5] }}>
         <ambientLight intensity={0.5} />
         <directionalLight position={[-100, 5, 5]} intensity={20} />
