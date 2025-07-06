@@ -12,12 +12,18 @@ import type { CreateFileRoute, FileRoutesByPath } from '@tanstack/react-router'
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as StoreRouteImport } from './routes/store'
+import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as InventoryRouteImport } from './routes/inventory'
 import { Route as IndexRouteImport } from './routes/index'
 
 const StoreRoute = StoreRouteImport.update({
   id: '/store',
   path: '/store',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InventoryRoute = InventoryRouteImport.update({
@@ -34,30 +40,34 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/inventory': typeof InventoryRoute
+  '/profile': typeof ProfileRoute
   '/store': typeof StoreRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/inventory': typeof InventoryRoute
+  '/profile': typeof ProfileRoute
   '/store': typeof StoreRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/inventory': typeof InventoryRoute
+  '/profile': typeof ProfileRoute
   '/store': typeof StoreRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/inventory' | '/store'
+  fullPaths: '/' | '/inventory' | '/profile' | '/store'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/inventory' | '/store'
-  id: '__root__' | '/' | '/inventory' | '/store'
+  to: '/' | '/inventory' | '/profile' | '/store'
+  id: '__root__' | '/' | '/inventory' | '/profile' | '/store'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   InventoryRoute: typeof InventoryRoute
+  ProfileRoute: typeof ProfileRoute
   StoreRoute: typeof StoreRoute
 }
 
@@ -75,6 +85,13 @@ declare module '@tanstack/react-router' {
       path: '/inventory'
       fullPath: '/inventory'
       preLoaderRoute: typeof InventoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/store': {
@@ -105,6 +122,15 @@ declare module './routes/inventory' {
     FileRoutesByPath['/inventory']['fullPath']
   >
 }
+declare module './routes/profile' {
+  const createFileRoute: CreateFileRoute<
+    '/profile',
+    FileRoutesByPath['/profile']['parentRoute'],
+    FileRoutesByPath['/profile']['id'],
+    FileRoutesByPath['/profile']['path'],
+    FileRoutesByPath['/profile']['fullPath']
+  >
+}
 declare module './routes/store' {
   const createFileRoute: CreateFileRoute<
     '/store',
@@ -118,6 +144,7 @@ declare module './routes/store' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   InventoryRoute: InventoryRoute,
+  ProfileRoute: ProfileRoute,
   StoreRoute: StoreRoute,
 }
 export const routeTree = rootRouteImport

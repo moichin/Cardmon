@@ -30,13 +30,3 @@ export default function StoreInformation(props: StoreInformationProps) {
     );
     }
 
-   
-/*
-            <div className="snap-center w-full h-40 bg-red-500 rounded-xl text-white flex items-center justify-center text-xl shadow-lg shrink-0">
-                Tarjeta 2
-            </div>
-            <div className="snap-center w-full h-40 bg-red-500 rounded-xl text-white flex items-center justify-center text-xl shadow-lg shrink-0">
-                Tarjeta 2
-            </div>
-
-*/

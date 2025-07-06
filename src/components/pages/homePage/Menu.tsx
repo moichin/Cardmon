@@ -44,13 +44,13 @@ export default function Menu(props: MenuProps) {
               : 
               'motion-translate-y-out-[150%] -motion-translate-x-out-[100%] motion-opacity-out-[0%] motion-duration-[0.30s]/opacity motion-duration-[0.50s]' }`}>
                 <h2 className="font-offbit text-base w-full h-[18px] justify-center items-center flex text-white tracking-wider">{props.titleProfile}</h2>
-                <div className="size-20 rounded-full border-[3px] border-gray-400 absolute left-1/2 -translate-x-1/2 bottom-0">
+                <Link className="size-20 rounded-full border-[3px] border-gray-400 absolute left-1/2 -translate-x-1/2 bottom-0" to='/profile'>
                   <span className="w-[68px] h-[68px] rounded-full bg-white absolute left-1/2 -translate-x-1/2 mt-[3px]">
                     <svg className="w-[25px] h-[28px] left-1/2 top-5 -translate-x-1/2 absolute" xmlns="http://www.w3.org/2000/svg">
                     <path d="M17.1056 2.03624C15.9362 0.723121 14.3028 0 12.5 0C10.6876 0 9.04877 0.718746 7.88474 2.02374C6.70809 3.34311 6.13479 5.13622 6.2694 7.07246C6.53622 10.8924 9.33122 13.9999 12.5 13.9999C15.6688 13.9999 18.459 10.8931 18.73 7.07371C18.8664 5.15497 18.2895 3.36561 17.1056 2.03624ZM23.0766 27.9998H1.92337C1.64649 28.0036 1.37229 27.9431 1.12072 27.8228C0.869155 27.7024 0.646542 27.5253 0.469081 27.3042C0.0784666 26.8186 -0.078981 26.1555 0.0376023 25.4849C0.5448 22.5586 2.12769 20.1005 4.6156 18.3749C6.82588 16.843 9.62568 15.9999 12.5 15.9999C15.3743 15.9999 18.1741 16.8437 20.3844 18.3749C22.8723 20.0999 24.4552 22.558 24.9624 25.4842C25.079 26.1548 24.9215 26.818 24.5309 27.3036C24.3535 27.5248 24.1309 27.702 23.8794 27.8225C23.6278 27.9429 23.3536 28.0035 23.0766 27.9998Z" fill="black"/>
                     </svg>
                   </span>
-                </div>
+                </Link>
               </li>
 
               <li className={`w-[120px] h-[106px] absolute left-3 bottom-52 ${visible && !controlAnimation ? 

@@ -11,11 +11,11 @@ export default function MissionsInformationCard() {
     if (waitCardDaily == true) return; // Detiene el intervalo si waitCardDaily es true
 
     const interval = setInterval(() => {
-        setStepsAnimation(prev => {
-            if (prev >= 5) {
+        setStepsAnimation(previousValue => {
+            if (previousValue >= 5) {
                 return 0;
             }
-            return prev + 1;
+            return previousValue + 1;
         });
     }, 500);
 
@@ -51,14 +51,14 @@ export default function MissionsInformationCard() {
     return(
         <> 
         <div className="snap-center size-full text-white flex flex-col text-xl shadow-lg shrink-0 pl-4 pr-4">
-                <h1 className="flex w-full h-36 text-center items-center justify-center text-2xl font-offbit font-bold tracking-wider flex-col">
+                <h1 className="flex w-full h-36 text-center items-center justify-center text-2xl font-offbit font-bold tracking-wider flex-col mt-8">
                     <div>COMPLETE THE MISSIONS </div>
                     <div>AND <span className="text-cardmon-orage">WAIT</span> FOR BE</div>
                     <div>AVAILABLE AGAIN</div>
                 </h1>
                 
                 <div className="w-full h-[125px] relative flex flex-col border-4 border-cardmon-orage rounded-lg 
-                bg-black ">
+                bg-black mt-6">
                     {waitCardDaily && (<div className='absolute bg-black w-full size-full flex z-1 opacity-95'>
                         <h1 className="size-full text-center text-white flex items-center justify-center text-2xl font-offbit font-bold leading-none tracking-wider">24:00:00</h1>
                     </div>)}
@@ -79,7 +79,7 @@ export default function MissionsInformationCard() {
                             <h2 className="leading-none text-white font-offbit font-bold tracking-wider text-xl pt-0.5 mr-5">+10</h2>
                         </div>
                     </div>
-                    <div className="flex justify-between w-full h-auto mt-5">
+                    <div className="flex justify-between w-full h-auto mt-5 mb-5">
                         <div className="flex items-center">
                             <div className="w-[200px] h-2 ml-5 bg-white">
                                 <div className="bg-cardmon-orage w-[200px] flex h-2 transition-all duration-300" style={{ width: cardDaily() }}>
@@ -92,11 +92,13 @@ export default function MissionsInformationCard() {
                     </div>
                 </div>
 
-                <div className="flex w-full h-auto pt-[21px]">
-                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <div className="flex w-full h-full ">
+                    <div className=" items-end flex h-full w-full pb-3">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="16" cy="16" r="16" fill="white"/>
                         <path d="M17.311 9.24988L10.3572 15.2221C10.2451 15.3184 10.1552 15.4378 10.0936 15.5721C10.0319 15.7065 10 15.8527 10 16.0006C10 16.1485 10.0319 16.2946 10.0936 16.429C10.1552 16.5633 10.2451 16.6828 10.3572 16.779L17.311 22.7512C17.9747 23.3212 19 22.8487 19 21.9728V10.0266C19 9.15075 17.9747 8.6782 17.311 9.24988Z" fill="#343434"/>
-                    </svg>
+                        </svg>
+                    </div>
                 </div>
         </div>
         
@@ -104,7 +106,4 @@ export default function MissionsInformationCard() {
     );
 }
 
-/*
-<h2 className="flex w-full h-20  text-center items-center justify-center text-[64px] font-offbit font-bold leading-none tracking-wider">1530</h2>
-<h3 className="flex w-full h-auto  text-center items-center justify-center text-2xl font-offbit font-bold leading-none tracking-wider">STEPS</h3>
-*/
+

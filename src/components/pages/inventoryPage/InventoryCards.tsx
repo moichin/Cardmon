@@ -1,5 +1,5 @@
 import { useState } from "react";
-import cardsData from "../../../data/cards.json"; // Cambiá la ruta según tu estructura
+import cardsData from "../../../data/cards.json"; 
 import CardModel3d from "../storePage/CardModel3d";
 
 export default function InventoryCards() {
@@ -29,15 +29,15 @@ const filterCards = selectedRarity === "ALL" ? cardsData : cardsData.filter(card
             </div>
 
             <div className="p-4 pl-4">
-                <div className="flex w-full h-8 space-x-2 justify-center">
+                <div className="flex w-full h-8 space-x-2 justify-center ">
                 {["ALL", "NORMAL", "RARE", "EPIC", "LEGEND"].map((rarity) => (
                     <button
                         key={rarity}
                         onClick={() => setSelectedRarity(rarity)}
-                        className={`flex w-[72px] h-8 px-2 shadow-[0px_8px_0px_rgba(0,0,0)] border-2 rounded-sm border-white 
+                        className={`flex w-[72px] h-8 shadow-[0px_8px_0px_rgba(0,0,0)] border-2 rounded-sm border-white 
                         ${selectedRarity === rarity ? "bg-white text-black" : "bg-cardmon-orage text-black"} 
                         active:translate-y-2 active:shadow-[0px_2px_0px_rgba(0,0,0)] justify-center items-center`}>
-                        <h2 className="text-base leading-none text-black font-offbit font-bold tracking-wider">{rarity}</h2>
+                        <h2 className="text-sm leading-none text-black font-offbit font-bold tracking-wider flex w-full h-full justify-center items-center pl-1 pr-1">{rarity}</h2>
                     </button>
                 ))}
                 </div>
