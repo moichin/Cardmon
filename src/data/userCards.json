@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "fire",
+    "rarity": "NORMAL",
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "name": "pikachu",
+    "rarity": "RARE",
+    "color": "blue"
+  },
+   {
+    "id": 3,
+    "name": "mario",
+    "rarity": "EPIC",
+    "color": "Red"
+  },
+  {
+    "id": 4,
+    "name": "miranda",
+    "rarity": "LEGEND",
+    "color": "Pink"
+  }
+]

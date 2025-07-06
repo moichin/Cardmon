@@ -1,8 +1,17 @@
 import cardsData from "../../../data/cards.json"; 
+import cardsUserData from "../../../data/userCards.json";
 
-export default function ProfilePage(){
+interface ProfilePageProps{
+    titleStats: string, 
+    titleCards: string,
+    titleSteps: string,
+    titleCoins: string
+}
+
+export default function ProfilePage(props: ProfilePageProps){
 
 const allCards = cardsData;
+const userCards = cardsUserData
 
     return(
         <div className="absolute size-full bg-cardmon-gray pl-4 pr-4">
@@ -14,12 +23,12 @@ const allCards = cardsData;
                     </div>
                     
                     <div className="text-cardmon-orage">
-                       STADISTICS
+                       {props.titleStats}
                     </div>
 
                     <div className="flex w-full justify-between opacity-75">
                         <div className="ml-4">
-                        TOTAL STEPS
+                        {props.titleSteps}
                         </div>
                         <div>
                         1000000
@@ -28,7 +37,7 @@ const allCards = cardsData;
                     
                     <div className="flex w-full justify-between opacity-75">
                         <div className="ml-4">
-                        TOTAL COINS
+                        {props.titleCoins}
                         </div>
                         <div>
                         1000
@@ -39,10 +48,10 @@ const allCards = cardsData;
                 font-bold leading-none tracking-wider mt-14 space-y-4">
                     <div className="flex w-full justify-between">
                        <div className="text-cardmon-orage">
-                        CARDS COLLECTED
+                        {props.titleCards}
                        </div>
                        <div>
-                        {allCards.length}/{allCards.length}
+                        {userCards.length}/{allCards.length}
                        </div>
                     </div>
 
