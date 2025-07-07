@@ -1,5 +1,5 @@
 
-import Login from "./LoginPage";
+import LoginPage from "./LoginPage";
 
 interface LoginProps{
     titleName: string;
@@ -16,7 +16,7 @@ interface ContainerLoginProps {
 export default function ContainerLogin(props: ContainerLoginProps) {
     return (
         <div>
-            <Login {...props.login}></Login>
+            <LoginPage {...props.login}></LoginPage>
         </div>
     );
 }

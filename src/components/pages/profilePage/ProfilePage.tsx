@@ -24,7 +24,7 @@ export default function ProfilePage(props: ProfilePageProps) {
     });
 
     localStorage.removeItem("token");
-    window.location.href = "/"; // Redirige al landing
+    window.location.href = "/";
   };
 
   return (

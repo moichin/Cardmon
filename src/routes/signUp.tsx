@@ -6,13 +6,13 @@ import ContainerSignUp from "../components/pages/signUpPage/ContainerSignUp";
 
 
 const signUp = {
-  titleFullName: "Full Name",
-  titleEmail: "Email",
-  titlePassword: "Password",
-  titleConfirmPassword: "Confirm Password",
-  titleSignUp: "Sign Up",
-  titleLogin: "Login",
-  titleAlreadyHaveAccount: "Already have an account?",
+  titleFullName: "FULL NAME",
+  titleEmail: "EMAIL",
+  titlePassword: "PASSWORD",
+  titleConfirmPassword: "CONFIRM PASSWORD",
+  titleSignUp: "SIGN UP",
+  titleLogin: "LOGIN",
+  titleAlreadyHaveAccount: "ALREADY HAVE AN ACCOUNT?",
 }
 
 function RouteComponent() {

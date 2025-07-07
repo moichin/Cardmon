@@ -1,5 +1,5 @@
 
-import SignUp from "./SignUpPage";
+import SignUpPage from "./SignUpPage";
 
 interface SignUpProps{
     titleFullName: string;
@@ -17,10 +17,10 @@ interface ContainerSignUpProps{
 
 export default function ContainerSignUp(props: ContainerSignUpProps){
     return(
-        <div>
-            <SignUp {...props.signUp}>
+        <div className="absolute flex size-full bg-cardmon-gray">
+            <SignUpPage {...props.signUp}>
                 
-            </SignUp>
+            </SignUpPage>
         </div>
     );
 }
