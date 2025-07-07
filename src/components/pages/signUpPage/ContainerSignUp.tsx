@@ -1,5 +1,5 @@
 
-import SignUp from "./SignUp";
+import SignUp from "./SignUpPage";
 
 interface SignUpProps{
     titleFullName: string;

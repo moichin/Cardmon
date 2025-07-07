@@ -4,6 +4,7 @@ export const Route = createFileRoute({
 
 import ContainerSignUp from "../components/pages/signUpPage/ContainerSignUp";
 
+
 const signUp = {
   titleFullName: "Full Name",
   titleEmail: "Email",
@@ -13,10 +14,15 @@ const signUp = {
   titleLogin: "Login",
   titleAlreadyHaveAccount: "Already have an account?",
 }
+
 function RouteComponent() {
+
+
   return (
     <> 
     <ContainerSignUp signUp={signUp}></ContainerSignUp>
     </>
   );
 }
+
+

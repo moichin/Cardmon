@@ -5,9 +5,12 @@ export const Route = createFileRoute({
 import ContainerInventoryPage from "../components/pages/inventoryPage/ContainerInventoryPage";
 
 
+
 function RouteComponent() {
+
+
   return (
-    <ContainerInventoryPage></ContainerInventoryPage>
+    <ContainerInventoryPage ></ContainerInventoryPage>
 
   );
 }
