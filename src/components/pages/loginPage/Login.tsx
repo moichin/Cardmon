@@ -11,13 +11,16 @@ interface LoginProps{
 }
 
 export default function Login(props: LoginProps) {
-     const [showPassword, setShowPassword] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
     const passwordVisible = () => {
         setShowPassword(!showPassword);
     }
     
-  return (
-       <div className="bg-white h-screen flex">
+    return (
+        <div className="bg-white h-screen flex">
             <div className="bg-zinc-800 p-10 w-full">
                 <div className="flex justify-center mb-6">
                     <img src="../public/logo.svg" alt="Logo" className="w-25 h-25" />
@@ -30,6 +33,8 @@ export default function Login(props: LoginProps) {
                         <input
                             type="email"
                             id="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                             className='w-full border px-4 text-amber-50 bg-gray-500 rounded-3xl py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500'/>
                     </div>
 
@@ -38,35 +43,41 @@ export default function Login(props: LoginProps) {
                         <input
                             type={showPassword ? "text" : "password"}
                             id="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                             className='w-full border px-4 text-amber-50 bg-gray-500  rounded-3xl py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500'/>
-                            <button
+                        <button
                             type="button"
                             onClick={passwordVisible}
                             className="absolute right-15 top-74 transform -translate-y-1/2 text-white hover:text-yellow-500"
-                            >
+                        >
                             {showPassword ? "Hide" : "Show"}
-                            </button>
+                        </button>
                     </div>
 
                     <Link 
-                        type="submit"
-                        className="w-full mt-5 bg-orange-400 text-white font-bold py-4 rounded-3xl hover:bg-yellow-600 transition duration-200"
-                        to="/">
+                        to="/home"
+                        onClick={(e) => {
+                            if (!email || !password) {
+                                e.preventDefault();
+                                alert("Por favor, complete todos los campos.");
+                            }
+                        }}
+                        className={`w-full mt-5 text-white font-bold py-4 rounded-3xl transition duration-200 ${
+                            email && password ? "bg-orange-400 hover:bg-yellow-600" : "bg-gray-400 cursor-not-allowed"
+                        }`}
+                    >
                         {props.titleLogin}
                     </Link>
 
-                    
-
-                    
                     <div className="mt-2">
-                         <p className="text-center text-white">{props.titleDontHaveAccount} 
+                        <p className="text-center text-white">{props.titleDontHaveAccount} 
                             <Link className='text-yellow-500 underline' to="/signUp"> {props.titleSignUp}</Link>
                         </p>
                     </div>
                     
                 </form>
-
             </div>
-       </div>
+        </div>
     );
 }

@@ -104,7 +104,7 @@ return (
                     
                     <div className="mt-2">
                         <p className="text-center text-white">{props.titleAlreadyHaveAccount} 
-                            <Link className='text-yellow-500 underline' to='/login'> {props.titleLogin}</Link></p>
+                            <Link className='text-yellow-500 underline' to='/'> {props.titleLogin}</Link></p>
                     </div>
                     
                 </form>

@@ -14,8 +14,8 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as StoreRouteImport } from './routes/store'
 import { Route as SignUpRouteImport } from './routes/signUp'
 import { Route as ProfileRouteImport } from './routes/profile'
-import { Route as LoginRouteImport } from './routes/login'
 import { Route as InventoryRouteImport } from './routes/inventory'
+import { Route as HomeRouteImport } from './routes/home'
 import { Route as IndexRouteImport } from './routes/index'
 
 const StoreRoute = StoreRouteImport.update({
@@ -33,14 +33,14 @@ const ProfileRoute = ProfileRouteImport.update({
   path: '/profile',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LoginRoute = LoginRouteImport.update({
-  id: '/login',
-  path: '/login',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const InventoryRoute = InventoryRouteImport.update({
   id: '/inventory',
   path: '/inventory',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HomeRoute = HomeRouteImport.update({
+  id: '/home',
+  path: '/home',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -51,16 +51,16 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/home': typeof HomeRoute
   '/inventory': typeof InventoryRoute
-  '/login': typeof LoginRoute
   '/profile': typeof ProfileRoute
   '/signUp': typeof SignUpRoute
   '/store': typeof StoreRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/home': typeof HomeRoute
   '/inventory': typeof InventoryRoute
-  '/login': typeof LoginRoute
   '/profile': typeof ProfileRoute
   '/signUp': typeof SignUpRoute
   '/store': typeof StoreRoute
@@ -68,22 +68,22 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/home': typeof HomeRoute
   '/inventory': typeof InventoryRoute
-  '/login': typeof LoginRoute
   '/profile': typeof ProfileRoute
   '/signUp': typeof SignUpRoute
   '/store': typeof StoreRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/inventory' | '/login' | '/profile' | '/signUp' | '/store'
+  fullPaths: '/' | '/home' | '/inventory' | '/profile' | '/signUp' | '/store'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/inventory' | '/login' | '/profile' | '/signUp' | '/store'
+  to: '/' | '/home' | '/inventory' | '/profile' | '/signUp' | '/store'
   id:
     | '__root__'
     | '/'
+    | '/home'
     | '/inventory'
-    | '/login'
     | '/profile'
     | '/signUp'
     | '/store'
@@ -91,8 +91,8 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  HomeRoute: typeof HomeRoute
   InventoryRoute: typeof InventoryRoute
-  LoginRoute: typeof LoginRoute
   ProfileRoute: typeof ProfileRoute
   SignUpRoute: typeof SignUpRoute
   StoreRoute: typeof StoreRoute
@@ -107,18 +107,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/home': {
+      id: '/home'
+      path: '/home'
+      fullPath: '/home'
+      preLoaderRoute: typeof HomeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/inventory': {
       id: '/inventory'
       path: '/inventory'
       fullPath: '/inventory'
       preLoaderRoute: typeof InventoryRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/login': {
-      id: '/login'
-      path: '/login'
-      fullPath: '/login'
-      preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/profile': {
@@ -154,6 +154,15 @@ declare module './routes/index' {
     FileRoutesByPath['/']['fullPath']
   >
 }
+declare module './routes/home' {
+  const createFileRoute: CreateFileRoute<
+    '/home',
+    FileRoutesByPath['/home']['parentRoute'],
+    FileRoutesByPath['/home']['id'],
+    FileRoutesByPath['/home']['path'],
+    FileRoutesByPath['/home']['fullPath']
+  >
+}
 declare module './routes/inventory' {
   const createFileRoute: CreateFileRoute<
     '/inventory',
@@ -161,15 +170,6 @@ declare module './routes/inventory' {
     FileRoutesByPath['/inventory']['id'],
     FileRoutesByPath['/inventory']['path'],
     FileRoutesByPath['/inventory']['fullPath']
-  >
-}
-declare module './routes/login' {
-  const createFileRoute: CreateFileRoute<
-    '/login',
-    FileRoutesByPath['/login']['parentRoute'],
-    FileRoutesByPath['/login']['id'],
-    FileRoutesByPath['/login']['path'],
-    FileRoutesByPath['/login']['fullPath']
   >
 }
 declare module './routes/profile' {
@@ -202,8 +202,8 @@ declare module './routes/store' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  HomeRoute: HomeRoute,
   InventoryRoute: InventoryRoute,
-  LoginRoute: LoginRoute,
   ProfileRoute: ProfileRoute,
   SignUpRoute: SignUpRoute,
   StoreRoute: StoreRoute,

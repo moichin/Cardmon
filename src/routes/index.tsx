@@ -1,39 +1,21 @@
-import ContainerHomePage from '../components/pages/homePage/ContainerHomePage'
-
-const homePage = {
-    steps: 0,
-    coinsTitle: 'COINS',
-    coins: 1000,
-    todayStepsTitle: 'TODAY STEPS',
-    missionsTitle: 'MISSIONS PROGRESS'
-}
-
-const cardMissions = {
-    cardDailyGoalTitle: 'DAILY GOAL',
-    cardRewardTitle: 'REWARD',
-    cardDailySteps: 0, 
-    cardDailyStepsGoal: '10000',
-    cardStepsTitle: 'STEPS',  
-    cardDailyRewardCoins: '+10',
-
-    cardWeeklyGoalTitle: 'WEEKLY GOAL',
-    cardWeeklySteps: 0,
-    cardWeeklyStepsGoal: '70000',
-    cardWeeklyRewardCoins: '+70'
-}
-
-const menu = {
-  titleProfile: 'PROFILE',
-  titleInventory: 'INVENTORY',
-  titleStore: 'STORE',
-}
-
 export const Route = createFileRoute({
   component: RouteComponent,
 })
 
+import ContainerLogin from "../components/pages/loginPage/ContainerLogin";
+
+const login = {
+  titleName: "Name",
+  titleEmail: "Email",
+  titlePassword: "Password",
+  titleLogin: "Login",
+  titleSignUp: "Sign Up",
+  titleDontHaveAccount: "Don’t have an account?",
+}
 function RouteComponent() {
   return (
-        <ContainerHomePage homePage={homePage} cardMissions={cardMissions} menu={menu}></ContainerHomePage> 
-  )
+    <>
+      <ContainerLogin login={login}></ContainerLogin>
+    </>
+  );
 }
