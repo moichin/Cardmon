@@ -95,7 +95,7 @@ export default function ContainerProfilePage() {
         titleCoins="COINS"
         username={userQuery.data.name}
         totalSteps={totalSteps}
-        coins={1000} // Reemplace esto si ya obtiene monedas del backend
+        coins={userQuery.data.coins}
         userCards={userCardsQuery.data}
         allCards={allCardsQuery.data}
       />

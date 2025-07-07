@@ -10,7 +10,7 @@ interface CardProps {
 const storePage = {
   coinsTitle: 'COINS',
   priceTitle: 'PRICE',
-  price: '100',
+  price: '10',
   btnTitle: 'OPEN'
 }
 

@@ -1,5 +1,3 @@
-import cardsData from "../../../data/cards.json"; 
-import cardsUserData from "../../../data/userCards.json";
 
 interface ProfilePageProps {
   titleStats: string;
@@ -51,7 +49,7 @@ export default function ProfilePage(props: ProfilePageProps) {
           <div className="flex w-full justify-between">
             <div className="text-cardmon-orage">{props.titleCards}</div>
             <div>
-              {props.userCards.length}/{props.userCards.length}
+              {props.userCards.length}/{props.allCards.length}
             </div>
           </div>
         </h2>
